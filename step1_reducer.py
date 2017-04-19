@@ -1,10 +1,4 @@
 
-# coding: utf-8
-
-# In[3]:
-
-#!/usr/bin/env python
-
 import sys
 
 current_count = 0
@@ -17,7 +11,6 @@ combo = None
 
 # input comes from STDIN
 for line in sys.stdin:
-#for line in testl:
 
     # remove leading and trailing whitespace
     line = line.strip()
@@ -28,8 +21,7 @@ for line in sys.stdin:
     try:
         count = int(count)
     except ValueError:
-        # count was not a number, so silently
-        # ignore/discard this line
+        # count was not a number, so silently discard this line        
         continue
     # this IF-switch only works because Hadoop sorts map output
     # by key (here: word) before it is passed to the reducer
@@ -38,9 +30,7 @@ for line in sys.stdin:
         current_count += count
     else:
         if current_combo:
-            # write result to STDOUT
-            #if current_count > 25000000.0:
-                      
+            # write result to STDOUT                      
             print('%s\t%s\t%s' % (current_ip, current_dt,current_count))
             current_ip = speaker
             current_dt = word
@@ -49,13 +39,10 @@ for line in sys.stdin:
         current_ip = speaker
         current_dt = word
         
-# do not forget to output the last word if needed!
-if current_combo == combo:
-    #if current_count > 25000000.0:
+# the last word if needed!
+if current_combo == combo:    
     print('%s\t%s\t%s' % (current_ip, current_dt,current_count))
 
-
-# In[ ]:
 
 
 
