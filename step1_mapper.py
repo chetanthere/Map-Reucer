@@ -1,15 +1,4 @@
 
-# coding: utf-8
-
-# In[9]:
-
-
-
-
-# In[ ]:
-
-#!/usr/bin/env python
-
 import sys
 import re
 # input comes from STDIN (standard input)
@@ -18,9 +7,6 @@ for line in sys.stdin:
     #remove leading and trailing whitespace
     line = line.strip()
     line = line.strip()
-#for i in range(1):
-#    line = testl.strip()
-#    line = testl.strip()
     ip, sd, st, ed, et = line.split()
     h1 =  st[:2]
     st2 = st[3:]
@@ -43,10 +29,3 @@ for line in sys.stdin:
     ss = (s2i - s1i)
     tots = hs + ms + ss
     print('%s\t%s\t%s' % (ip,sd,tots))
-    
-
-
-# In[ ]:
-
-
-
