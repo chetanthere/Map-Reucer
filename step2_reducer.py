@@ -1,10 +1,4 @@
 
-# coding: utf-8
-
-# In[ ]:
-
-#!/usr/bin/env python
-
 import sys
 
 current_count = 0
@@ -17,10 +11,8 @@ combo = None
 #testl = ["abc.com 1995-08-20 2","abc.com 1995-08-21 3","abc.com 1995-08-22 7","abc.com 1995-08-23 15","pqr.com 1995-08-23 55",
 #        "pqr.com 1995-08-23 120","pqr.com 1995-08-23 550"]
 
-# input comes from STDIN
-for line in sys.stdin:
-#for line in testl:
 
+for line in sys.stdin:
     # remove leading and trailing whitespace
     line = line.strip()
 
@@ -30,8 +22,7 @@ for line in sys.stdin:
     try:
         count = int(count)
     except ValueError:
-        # count was not a number, so silently
-        # ignore/discard this line
+        # count was not a number, so silently discard this line        
         continue
     # this IF-switch only works because Hadoop sorts map output
     # by key (here: word) before it is passed to the reducer
@@ -56,9 +47,8 @@ for line in sys.stdin:
             spike_count = 0
         current_count = count
         current_combo = combo
-# do not forget to output the last word if needed!
-if current_combo == combo:
-    #if current_count > 25000000.0:
+# the last word if needed!
+if current_combo == combo:    
     if spike_count == 2:
         print('%s\t%s' % (current_combo, s1))
     
